@@ -1,0 +1,15 @@
+.header__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+} 
+
+@media screen and (max-width: 767px){
+    .header__container {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 1.22;
+        margin-right: 15px;
+    }
+    }
