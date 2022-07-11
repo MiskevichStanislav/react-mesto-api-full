@@ -5,6 +5,7 @@ const allowedCors = {
     'https://msprod.nomoredomains.xyz',
     'http://msprod.nomoredomains.xyz',
     'http://localhost:3000',
+    'http://localhost:3001',
   ],
   credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
