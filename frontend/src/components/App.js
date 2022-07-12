@@ -187,7 +187,6 @@ function App() {
         } else {
           setInfoPopupOpen(true);
           setIsReg(false);
-          console.log('else')
         }
       })
       .catch((err) => {
@@ -200,7 +199,7 @@ function App() {
   function handleLoginSubmit(email, password) {
     auth.authorize(email, password)
       .then((data) => {
-        localStorage.setItem("jwt", data.token);
+        // localStorage.setItem("jwt", data.token);
         setEmail(email);
         handleLogin();
         history.push('/');
