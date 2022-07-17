@@ -4,7 +4,7 @@ import Header from "./Header.js";
 import Main from "./Main.js";
 import ImagePopup from "./ImagePopup.js";
 import Footer from "./Footer.js";
-import { api } from "../utils/Api";
+import Api from '../utils/Api';
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -31,6 +31,16 @@ function App() {
   const [isReg, setIsReg] = useState(false);
   const [email, setEmail] = useState('');
   const history = useHistory();
+
+   const api = new Api({
+    baseUrl: 'http://localhost:3000',
+    credentials: 'include',
+    headers: {
+      authorization: '26f6c155-4854-4793-af04-7b9847248604',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  });
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);

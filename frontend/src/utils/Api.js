@@ -1,7 +1,9 @@
-export class Api {
-  constructor({ baseUrl, headers }) {
+ class Api {
+  constructor({ productionUrl, baseUrl, headers, credentials }) {
+    this._productionUrl = productionUrl;
     this._headers = headers;
     this._baseUrl = baseUrl;
+    this._credentials = credentials;
   }
 
   _checkResponse(res) {
@@ -13,6 +15,7 @@ export class Api {
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._checkResponse)
@@ -21,6 +24,7 @@ export class Api {
   getCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._checkResponse)
@@ -29,6 +33,7 @@ export class Api {
   editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -41,6 +46,7 @@ export class Api {
   addCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -53,6 +59,7 @@ export class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._checkResponse)
@@ -61,6 +68,7 @@ export class Api {
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'PUT',
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._checkResponse)
@@ -69,6 +77,7 @@ export class Api {
   deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     })
       .then(this._checkResponse)
@@ -77,6 +86,7 @@ export class Api {
   editAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar
@@ -86,10 +96,4 @@ export class Api {
   }
 }
 
-export const api = new Api({
-  baseUrl: 'http://localhost:3000',
-  headers: {
-    authorization: '26f6c155-4854-4793-af04-7b9847248604',
-    'Content-Type': 'application/json'
-  }
-});
+export default Api;
