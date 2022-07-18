@@ -1,4 +1,10 @@
-const baseUrl = 'https://apims.nomoredomains.xyz';
+let baseUrl = '';
+const { NODE_ENV } = process.env;
+if ( NODE_ENV === 'production' ) {
+  baseUrl = 'https://apims.nomoredomains.xyz';
+} else {
+  baseUrl = 'http://localhost:3000'
+}
 
 export const register = (email, password) => {
     return fetch(`${baseUrl}/signup`, {

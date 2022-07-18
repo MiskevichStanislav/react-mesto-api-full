@@ -3,15 +3,14 @@ const cors = require('cors');
 const listUrl = () => {
   const { NODE_ENV } = process.env;
   let list = [];
-  if (!NODE_ENV) {
+  if (NODE_ENV) {
     list = [
-      'https://localhost:3000',
-      'https://localhost:3001',
+      'https://msprod.nomoredomains.xyz',
     ];
   } else {
     list = [
-      'https://msprod.nomoredomains.xyz',
-      'http://msprod.nomoredomains.xyz',
+      'http://localhost:3000',
+      'http://localhost:3001',
     ];
   }
   return list;
@@ -19,7 +18,7 @@ const listUrl = () => {
 
 const allowedCors = {
   origin: listUrl(),
-  // credentials: true,
+  credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 

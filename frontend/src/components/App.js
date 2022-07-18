@@ -32,9 +32,15 @@ function App() {
   const [isReg, setIsReg] = useState(false);
   const [email, setEmail] = useState('');
   const history = useHistory();
-
+  let baseUrl = '';
+  const { NODE_ENV } = process.env;
+  if ( NODE_ENV === 'production' ) {
+    baseUrl = 'https://apims.nomoredomains.xyz';
+  } else {
+    baseUrl = 'http://localhost:3000'
+  }
    const api = new Api({
-    baseUrl: 'https://apims.nomoredomains.xyz',
+    baseUrl: baseUrl,
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json',
