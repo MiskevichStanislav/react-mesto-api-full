@@ -3,6 +3,7 @@ const AuthorisationErr = require('../errors/AuthorisationErr_401');
 
 module.exports = (req, res, next) => {
   const { JWT_SECRET = 'some-secret-key' } = process.env;
+  console.log(JWT_SECRET);
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer ')) {
     throw (new AuthorisationErr('Необходима авторизация'));
