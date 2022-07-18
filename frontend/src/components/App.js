@@ -34,6 +34,7 @@ function App() {
   const history = useHistory();
   let baseUrl = '';
   const { NODE_ENV } = process.env;
+  console.log(NODE_ENV)
   if ( NODE_ENV === 'production' ) {
     baseUrl = 'https://apims.nomoredomains.xyz';
   } else {
