@@ -17,30 +17,26 @@ module.exports.getUser = (req, res, next) => {
       if (!user) {
         return next(new NotFoundErr('Пользователь по _id не найден'));
       }
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch(next);
 };
 module.exports.createUser = (req, res, next) => {
-  const {
-    name, about, avatar, email, password,
-  } = req.body;
-
+  const { email, password } = req.body;
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
-      name,
-      about,
-      avatar,
       email,
       password: hash,
     }))
-    .then((user) => res.status(201).send({
-      name: user.name,
-      about: user.about,
-      avatar: user.avatar,
-      email: user.email,
-      _id: user._id,
-    }))
+    .then((user) => {
+      res.status(201).send({
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+        _id: user._id,
+      });
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidErr('Введены некорректные данные'));

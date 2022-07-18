@@ -119,6 +119,7 @@ function App() {
         .then(([userData, cardData]) => {
           setCurrentUser(userData);
           setCards(cardData);
+          console.log(userData, cardData)
         })
         .catch((err) => console.log(`Ошибка ${err}`))
         .finally(() => { });
@@ -191,6 +192,7 @@ function App() {
       .register(email, password)
       .then((res) => {
         if (res) {
+          console.log(res)
           setInfoPopupOpen(true);
           setIsReg(true);
           history.push('/sign-in');
@@ -233,10 +235,10 @@ function App() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.checkToken(jwt)
-        .then((res) => {
+        .then(({email}) => {
           handleLogin();
           history.push('/');
-          setEmail(res.data.email);
+          setEmail(email);
         })
     }
   }

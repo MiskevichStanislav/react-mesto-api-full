@@ -5,9 +5,7 @@ const NotFoundErr = require('../errors/NotFoundErr_404');
 
 module.exports.getCards = (_req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({
-      data: cards,
-    }))
+    .then((cards) => res.send(cards))
     .catch((err) => {
       next(err);
     });
@@ -58,7 +56,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundErr('Карточка отсутствует');
       }
-      return res.send({ data: card });
+      return res.send(card);
     })
     .catch(next);
 };
@@ -73,7 +71,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundErr('Карточка отсутствует');
       }
-      return res.send({ data: card });
+      return res.send(card);
     })
     .catch(next);
 };
