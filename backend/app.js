@@ -16,6 +16,9 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
+
+app.use(requestLogger);
+
 app.use(cors);
 app.use(helmet());
 app.use(bodyParser.json());
@@ -45,8 +48,6 @@ app.post('/signin', celebrate({
 }), login);
 
 app.use(auth);
-
-app.use(requestLogger);
 
 app.use('/', require('./routes/users'));
 app.use('/', require('./routes/cards'));
