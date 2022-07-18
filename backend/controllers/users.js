@@ -104,17 +104,13 @@ module.exports.login = (req, res, next) => {
       if (!isPasswordCorrect) {
         return Promise.reject(new AuthErr('Неправильная почта или пароль'));
       }
+      const { JWT_SECRET = 'some-secret-key' } = process.env;
       const token = jwt.sign(
         { _id: user._id },
-        'some-secret-key',
+        JWT_SECRET,
         { expiresIn: '7d' },
       );
-      return res
-        .cookie('jwt', token, {
-          maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
-        })
-        .send({ message: 'Всё верно!' });
+      return res.send({ token, message: 'Все верно!' });
     })
     .catch(next);
 };
