@@ -2,10 +2,8 @@ const cors = require('cors');
 
 const allowedCors = {
   origin: [
-    'https://msprod.nomoredomains.xyz',
-    'http://msprod.nomoredomains.xyz',
-    'http://localhost:3000',
-    'http://localhost:3001',
+    'https://msprod.nomoredomains.xyz/',
+    'http://msprod.nomoredomains.xyz/',
   ],
   credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
