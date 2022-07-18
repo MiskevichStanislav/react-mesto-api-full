@@ -35,12 +35,12 @@ function App() {
   let baseUrl = '';
   const { NODE_ENV } = process.env;
   console.log(NODE_ENV)
-  if ( NODE_ENV === 'production' ) {
+  if (NODE_ENV === 'production') {
     baseUrl = 'https://apims.nomoredomains.xyz';
   } else {
     baseUrl = 'http://localhost:3000'
   }
-   const api = new Api({
+  const api = new Api({
     baseUrl: baseUrl,
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -191,7 +191,7 @@ function App() {
   function handleLogin() {
     setLoggedIn(true);
   }
-  
+
 
   function handleRegistrSubmit(email, password) {
     auth
@@ -241,7 +241,7 @@ function App() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.checkToken(jwt)
-        .then(({email}) => {
+        .then(({ email }) => {
           handleLogin();
           history.push('/');
           setEmail(email);

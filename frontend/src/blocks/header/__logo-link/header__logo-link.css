@@ -3,4 +3,10 @@
     align-content: flex-start;
     justify-content: flex-start;
     margin: 0;
+    transition: .8s;
+}
+
+.header__logo-link:hover {
+    cursor: pointer;
+    opacity: .5;
 }
