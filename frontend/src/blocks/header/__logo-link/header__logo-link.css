@@ -1,12 +1,12 @@
 .header__logo-link {
-    display: flex;
-    align-content: flex-start;
-    justify-content: flex-start;
-    margin: 0;
-    transition: .8s;
+  display: flex;
+  align-content: flex-start;
+  justify-content: flex-start;
+  margin: 0;
+  transition: .8s;
 }
 
 .header__logo-link:hover {
-    cursor: pointer;
-    opacity: .5;
+  cursor: pointer;
+  opacity: .5;
 }
