@@ -34,7 +34,7 @@ function App() {
   const history = useHistory();
 
    const api = new Api({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://apims.nomoredomains.xyz',
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json',

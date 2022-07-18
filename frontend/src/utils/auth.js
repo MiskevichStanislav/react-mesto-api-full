@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://apims.nomoredomains.xyz';
 
 export const register = (email, password) => {
     return fetch(`${baseUrl}/signup`, {
