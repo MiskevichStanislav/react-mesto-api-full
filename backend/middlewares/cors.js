@@ -19,7 +19,7 @@ const listUrl = () => {
 
 const allowedCors = {
   origin: listUrl(),
-  credentials: true,
+  // credentials: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 
