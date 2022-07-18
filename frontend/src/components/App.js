@@ -119,7 +119,6 @@ function App() {
         .then(([userData, cardData]) => {
           setCurrentUser(userData);
           setCards(cardData);
-          console.log(userData, cardData)
         })
         .catch((err) => console.log(`Ошибка ${err}`))
         .finally(() => { });
