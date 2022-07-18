@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from "./Header.js";
@@ -34,9 +35,8 @@ function App() {
 
    const api = new Api({
     baseUrl: 'http://localhost:3000',
-    credentials: 'include',
     headers: {
-      authorization: '26f6c155-4854-4793-af04-7b9847248604',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     }
@@ -208,8 +208,8 @@ function App() {
 
   function handleLoginSubmit(email, password) {
     auth.authorize(email, password)
-      .then((data) => {
-        // localStorage.setItem("jwt", data.token);
+      .then(({ token }) => {
+        localStorage.setItem("jwt", token);
         setEmail(email);
         handleLogin();
         history.push('/');

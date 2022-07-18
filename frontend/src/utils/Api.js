@@ -1,9 +1,7 @@
  class Api {
-  constructor({ productionUrl, baseUrl, headers, credentials }) {
-    this._productionUrl = productionUrl;
+  constructor({ baseUrl, headers }) {
     this._headers = headers;
     this._baseUrl = baseUrl;
-    this._credentials = credentials;
   }
 
   _checkResponse(res) {

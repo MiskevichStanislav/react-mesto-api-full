@@ -120,7 +120,7 @@ module.exports.getUserInfo = (req, res, next) => {
       if (!user) {
         throw new NotFoundErr('Пользователь по _id не найден');
       }
-      return res.status(200).send({ data: user });
+      return res.status(200).send(user);
     })
     .catch((error) => {
       if (error.name === 'CastErr') {
