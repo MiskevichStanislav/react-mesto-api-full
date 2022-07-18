@@ -1,5 +1,5 @@
 ## IP 
-51.250.96.51
+51.250.107.250
   
 ## Frontend
 https://msprod.nomoredomains.xyz/
